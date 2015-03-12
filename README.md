@@ -12,7 +12,7 @@ First, install the gem!
 
 Then, require the gem and include the Transmutable module in your model!
 
-Transmutable will delegate the serialization of your Ruby objects to a Transmuter object. Transmutable::Base, the default transmuter, will pull all of the instance variables primitives off of your object and push them into a hash.
+Transmutable will delegate the serialization of your Ruby objects to a Transmuter object. Transmutable::Base, the default transmuter, will pull all of the instance variable primitives off of your object and push them into a hash.
 
 ```ruby
   require 'transmutable'
