@@ -1,3 +1,6 @@
+require 'transmutable/base'
+require 'transmutable/transmutable_class_methods'
+
 module Transmutable
   def self.included(base)
     base.extend(TransmutableClassMethods)
@@ -58,58 +61,5 @@ module Transmutable
     else
       return_hash[key] = value.serialize
     end
-  end
-
-  module TransmutableClassMethods
-    def transmuter(transmuter_class)
-      class_eval do
-        define_method :transmuter do
-          transmuter_class
-        end
-      end
-    end
-  end
-
-  class Base
-    attr_accessor :model
-
-    def self.add_to_transmute(*methods)
-      define_method :transmute_addons do
-        methods
-      end
-    end
-
-    def self.remove_from_transmute(*methods)
-      define_method :transmute_skips do
-        methods
-      end
-    end
-
-    def initialize(model)
-      @model = model
-    end
-
-    def transmute
-      Hash[serialize_methods.map { |attribute| [attribute, model.send(attribute)] }]
-    end
-
-    private
-      def serialize_methods
-        default_attrs - transmute_skips + transmute_addons
-      end
-
-      def transmute_addons
-        []
-      end
-
-      def transmute_skips
-        []
-      end
-
-      def default_attrs
-        model.instance_variables
-          .reject { |var| model.instance_variable_get(var).respond_to? :serialize }
-          .map { |var| var.to_s.gsub('@', '').to_sym }
-      end
   end
 end
