@@ -100,7 +100,7 @@ person = Person.new(
   catchphrases: catchphrases
 )
 
-person.serialize_with(:catchphrases) #=> { name: 'Jeffrey', email: 'jeff@test.com', catchphrases: [{ priority: 1, body: 'Just roll with it!' }, { priority: 2, body: 'Just roll with it!' }]}
+person.serialize_with(:catchphrases) #=> { name: 'Jeffrey', email: 'jeff@test.com', catchphrases: [{ priority: 1, body: 'Just roll with it!' }, { priority: 2, body: 'GET HYPED' }]}
 ```
 
 ### Using Custom Transmuters
