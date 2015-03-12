@@ -25,8 +25,17 @@ Transmutable will delegate the serialization of your Ruby objects to a Transmute
     # ...
   end
 
-  person = Person.new(name: 'Jeffrey', email: 'jeff@test.com', favorite_color: 'Uhhh...')
-  person.serialize # => { name: 'Jeffery', email: 'jeff@test.com', favorite_color: 'Uhh...' }
+  person = Person.new(
+    name: 'Jeffrey', 
+    email: 'jeff@test.com', 
+    favorite_color: 'Uhhh...'
+  )
+
+  person.serialize # => { 
+    name: 'Jeffery', 
+    email: 'jeff@test.com', 
+    favorite_color: 'Uhh...' 
+  }
 ```
 
 ### Serializing Records with Associations
@@ -46,8 +55,19 @@ Any associated models that respond to serialize (through the Transmutable module
     attr_accessor :street, :city, :state, :zip_code
   end
 
-  address = Address.new(street: '123 Main Street', city: 'Ogden', state: 'UT', zip_code: 84055)
-  person = Person.new(name: 'Jeffrey', email: 'jeff@test.com', favorite_color: 'Uhhh...', address: address)
+  address = Address.new(
+    street: '123 Main Street', 
+    city: 'Ogden', 
+    state: 'UT', 
+    zip_code: 84055
+  )
+
+  person = Person.new(
+    name: 'Jeffrey', 
+    email: 'jeff@test.com', 
+    favorite_color: 'Uhhh...', 
+    address: address
+  )
 
   person.serialize_with(:address) # => { 
     name: 'Jeffery', 
@@ -78,11 +98,21 @@ This also works with nested associations or one-to-many relationships. As long a
   end
 
   catchphrases = [ 
-    Catchphrase.new(priority: 1, body: 'Just roll with it!'), 
-    Catchphrase.new(priority: 2, body: 'GET HYPED') 
+    Catchphrase.new(
+      priority: 1, 
+      body: 'Just roll with it!'
+    ), 
+    Catchphrase.new(
+      priority: 2, 
+      body: 'GET HYPED'
+    ) 
   ]
 
-  person = Person.new(name: 'Jeffrey', email: 'jeff@test.com', catchphrases: catchphrases)
+  person = Person.new(
+    name: 'Jeffrey', 
+    email: 'jeff@test.com', 
+    catchphrases: catchphrases
+  )
 
   person.serialize_with(:catchphrases) # => {
     name: 'Jeffrey',
@@ -122,8 +152,17 @@ You can swap out the default transmuter with your own transmuter object if you s
     end
   end
 
-  person = Person.new(name: 'Jeffrey Throwup', email: 'jeff@test.com', favorite_color: 'Uhhh...')
-  person.serialize # => { first_name: 'Jeffrey', last_name: 'Throwup', email: 'jeff@test.com' }
+  person = Person.new(
+    name: 'Jeffrey Throwup', 
+    email: 'jeff@test.com', 
+    favorite_color: 'Uhhh...'
+  )
+
+  person.serialize # => { 
+    first_name: 'Jeffrey', 
+    last_name: 'Throwup', 
+    email: 'jeff@test.com' 
+  }
 ```
 
 You can also define your own objects without inheriting from Transmutable::Base or using the Transmutable DSL. All you need to do is allow your object to initialize with the object being serialized, and define a transmute method!
