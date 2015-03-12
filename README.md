@@ -31,11 +31,7 @@ person = Person.new(
   favorite_color: 'Uhhh...'
 )
 
-person.serialize # => { 
-  name: 'Jeffery', 
-  email: 'jeff@test.com', 
-  favorite_color: 'Uhh...' 
-}
+person.serialize #=> { name: 'Jeffery', email: 'jeff@test.com', favorite_color: 'Uhh...' }
 ```
 
 ### Serializing Records with Associations
@@ -69,17 +65,7 @@ person = Person.new(
   address: address
 )
 
-person.serialize_with(:address) # => { 
-  name: 'Jeffery', 
-  email: 'jeff@test.com', 
-  favorite_color: 'Uhh...',
-  address: {
-    street: '123 Main Street', 
-    city: 'Ogden', 
-    state: 'UT', 
-    zip_code: 84055
-  }
-}
+person.serialize_with(:address) #=> { name: 'Jeffery', email: 'jeff@test.com', favorite_color: 'Uhh...', address: { street: '123 Main Street', city: 'Ogden', state: 'UT', zip_code: 84055 }}
 ```
 
 This also works with nested associations or one-to-many relationships. As long as the model on the other side of the method responds to serialize, you're good!
@@ -114,20 +100,7 @@ person = Person.new(
   catchphrases: catchphrases
 )
 
-person.serialize_with(:catchphrases) # => {
-  name: 'Jeffrey',
-  email: 'jeff@test.com',
-  catchphrases: [
-    { 
-      priority: 1, 
-      body: 'Just roll with it!'
-    },
-    {
-      priority: 2,
-      body: 'Just roll with it!'
-    }
-  ]
-}
+person.serialize_with(:catchphrases) #=> { name: 'Jeffrey', email: 'jeff@test.com', catchphrases: [{ priority: 1, body: 'Just roll with it!' }, { priority: 2, body: 'Just roll with it!' }]}
 ```
 
 ### Using Custom Transmuters
@@ -158,11 +131,7 @@ person = Person.new(
   favorite_color: 'Uhhh...'
 )
 
-person.serialize # => { 
-  first_name: 'Jeffrey', 
-  last_name: 'Throwup', 
-  email: 'jeff@test.com' 
-}
+person.serialize #=> { first_name: 'Jeffrey', last_name: 'Throwup', email: 'jeff@test.com' }
 ```
 
 You can also define your own objects without inheriting from Transmutable::Base or using the Transmutable DSL. All you need to do is allow your object to initialize with the object being serialized, and define a transmute method!
