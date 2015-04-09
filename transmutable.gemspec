@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'transmutable'
-  s.version     = '1.0.0'
+  s.version     = '1.0.1'
   s.date        = '2015-03-11'
   s.summary     = "An expressive DSL for converting Ruby objects to hashes and JSON objects"
   s.description = "A great little way to simplify object conversion when rendering an object to a hash or JSON."
