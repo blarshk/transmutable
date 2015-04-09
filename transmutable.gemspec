@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "A great little way to simplify object conversion when rendering an object to a hash or JSON."
   s.authors     = ["Mitch Monsen", "Jeff Thorup"]
   s.email       = 'mmonsen7@gmail.com'
-  s.files       = ["./lib/transmutable.rb"]
+  s.files       = ["./lib/transmutable.rb", "./lib/transmutable/base.rb", "./lib/transmutable/transmutable_class_methods.rb"]
   s.homepage    = 'https://github.com/blarshk/transmutable'
   s.license     = 'MIT'
 end
